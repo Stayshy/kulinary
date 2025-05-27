@@ -24,7 +24,7 @@ if (!defined('INTELLIGENCE_API_KEY') || empty(INTELLIGENCE_API_KEY)) {
 
 $apiKey = INTELLIGENCE_API_KEY;
 $url = "https://api.intelligence.io.solutions/api/v1/chat/completions";
-$userMessage = isset($_POST['message']) ? trim($_POST['message']) : "Подбери мероприятие для волонтера";
+$userMessage = isset($_POST['message']) ? trim($_POST['message']) : "Подбери рецепт для ужина";
 $model = isset($_POST['model']) ? trim($_POST['model']) : "deepseek-ai/DeepSeek-R1";
 
 if (empty($userMessage)) {
@@ -32,16 +32,16 @@ if (empty($userMessage)) {
     exit;
 }
 
-// Database search for events
-$conn = new mysqli("localhost", "root", "", "volunteer_system");
+// Database search for recipes
+$conn = new mysqli("localhost", "root", "", "culinary_system");
 $botResponse = "";
-$events = [];
+$recipes = [];
 
 if ($conn->connect_error) {
     $botResponse = "Ошибка подключения к базе данных: " . $conn->connect_error;
 } else {
-    // Search for matching active events
-    $stmt = $conn->prepare("SELECT title FROM events WHERE title LIKE ? AND status = 'active'");
+    // Search for matching published recipes
+    $stmt = $conn->prepare("SELECT title FROM recipes WHERE title LIKE ? AND status = 'published'");
     if ($stmt === false) {
         $botResponse = "Ошибка подготовки SQL: " . $conn->error;
     } else {
@@ -50,21 +50,21 @@ if ($conn->connect_error) {
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
-            $events[] = $row['title'];
+            $recipes[] = $row['title'];
         }
         $stmt->close();
     }
 
-    // If no matches, get popular active events
-    if (empty($events)) {
-        $stmt = $conn->prepare("SELECT title FROM events WHERE status = 'active' ORDER BY created_at DESC LIMIT 3");
+    // If no matches, get popular published recipes
+    if (empty($recipes)) {
+        $stmt = $conn->prepare("SELECT title FROM recipes WHERE status = 'published' ORDER BY created_at DESC LIMIT 3");
         if ($stmt === false) {
             $botResponse = "Ошибка подготовки SQL: " . $conn->error;
         } else {
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                $events[] = $row['title'];
+                $recipes[] = $row['title'];
             }
             $stmt->close();
         }
@@ -72,9 +72,9 @@ if ($conn->connect_error) {
     $conn->close();
 }
 
-// Prepare API prompt with events
-$eventsList = !empty($events) ? implode(", ", $events) : "нет доступных мероприятий";
-$prompt = "Отвечай только на русском языке, кратко, только сам ответ, без размышлений и лишних слов. Рекомендуй мероприятие из списка: $eventsList. Если запрос пользователя не соответствует списку, выбери подходящее мероприятие из списка или ответь 'Нет подходящих мероприятий'. Для общих вопросов (например, 'Как дела?') отвечай лаконично и дружелюбно.";
+// Prepare API prompt with recipes
+$recipesList = !empty($recipes) ? implode(", ", $recipes) : "нет доступных рецептов";
+$prompt = "Отвечай только на русском языке, кратко, только сам ответ, без размышлений и лишних слов. Рекомендуй рецепт из списка: $recipesList. Если запрос пользователя не соответствует списку, выбери подходящий рецепт из списка или ответь 'Нет подходящих рецептов'. Для общих вопросов (например, 'Как дела?') отвечай лаконично и дружелюбно.";
 
 $data = [
     "model" => $model,
@@ -83,7 +83,7 @@ $data = [
         ["role" => "user", "content" => $userMessage]
     ],
     "temperature" => 0.7,
-    "max_completion_tokens" => 200 // Increased for longer responses
+    "max_completion_tokens" => 200
 ];
 
 $ch = curl_init($url);
