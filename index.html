@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking Platform</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .item { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+        .actions { margin-top: 5px; }
+        form { margin-top: 20px; }
+        input, button { margin: 5px; padding: 5px; }
+    </style>
+</head>
+<body>
+<h1>Cooking Platform</h1>
+
+<h2>Recipes</h2>
+<div id="recipes"></div>
+<h3>Add New Recipe</h3>
+<form id="recipeForm">
+    <input type="text" id="recipeTitle" placeholder="Title" required>
+    <input type="text" id="recipeDescription" placeholder="Description">
+    <textarea id="recipeIngredients" placeholder="Ingredients" required></textarea>
+    <textarea id="recipeInstructions" placeholder="Instructions" required></textarea>
+    <input type="number" id="recipeChefId" placeholder="Chef ID" required>
+    <button type="submit">Add Recipe</button>
+</form>
+
+<h2>Workshops</h2>
+<div id="workshops"></div>
+<h3>Add New Workshop</h3>
+<form id="workshopForm">
+    <input type="text" id="workshopTitle" placeholder="Title" required>
+    <input type="text" id="workshopDescription" placeholder="Description">
+    <input type="datetime-local" id="workshopDate" required>
+    <input type="number" id="workshopChefId" placeholder="Chef ID" required>
+    <input type="number" id="workshopRecipeId" placeholder="Recipe ID" required>
+    <button type="submit">Add Workshop</button>
+</form>
+
+<h2>Register for Workshop</h2>
+<form id="registrationForm">
+    <input type="number" id="userId" placeholder="User ID" required>
+    <input type="number" id="workshopId" placeholder="Workshop ID" required>
+    <button type="submit">Register</button>
+</form>
+
+<script>
+    // Fetch and display recipes
+    async function fetchRecipes() {
+        const response = await fetch('/api/recipes');
+        const recipes = await response.json();
+        const recipesContainer = document.getElementById('recipes');
+        recipesContainer.innerHTML = '';
+        recipes.forEach(recipe => {
+            const recipeElement = document.createElement('div');
+            recipeElement.className = 'item';
+            recipeElement.innerHTML = `
+          <strong>Title:</strong> ${recipe.title}<br>
+          <strong>Description:</strong> ${recipe.description || 'N/A'}<br>
+          <strong>Ingredients:</strong> ${recipe.ingredients}<br>
+          <strong>Instructions:</strong> ${recipe.instructions}<br>
+          <div class="actions">
+            <button onclick="updateRecipe(${recipe.id})">Update</button>
+            <button onclick="deleteRecipe(${recipe.id})">Delete</button>
+          </div>
+        `;
+            recipesContainer.appendChild(recipeElement);
+        });
+    }
+
+    // Fetch and display workshops
+    async function fetchWorkshops() {
+        const response = await fetch('/api/workshops');
+        const workshops = await response.json();
+        const workshopsContainer = document.getElementById('workshops');
+        workshopsContainer.innerHTML = '';
+        workshops.forEach(workshop => {
+            const workshopElement = document.createElement('div');
+            workshopElement.className = 'item';
+            workshopElement.innerHTML = `
+          <strong>Title:</strong> ${workshop.title}<br>
+          <strong>Description:</strong> ${workshop.description || 'N/A'}<br>
+          <strong>Date:</strong> ${new Date(workshop.date).toLocaleString()}<br>
+          <strong>Recipe ID:</strong> ${workshop.recipe_id}<br>
+          <div class="actions">
+            <button onclick="updateWorkshop(${workshop.id})">Update</button>
+            <button onclick="deleteWorkshop(${workshop.id})">Delete</button>
+          </div>
+        `;
+            workshopsContainer.appendChild(workshopElement);
+        });
+    }
+
+    // Add a new recipe
+    document.getElementById('recipeForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('recipeTitle').value;
+        const description = document.getElementById('recipeDescription').value;
+        const ingredients = document.getElementById('recipeIngredients').value;
+        const instructions = document.getElementById('recipeInstructions').value;
+        const chef_id = document.getElementById('recipeChefId').value;
+
+        await fetch('/api/recipes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, description, ingredients, instructions, chef_id })
+        });
+
+        document.getElementById('recipeForm').reset();
+        fetchRecipes();
+    });
+
+    // Add a new workshop
+    document.getElementById('workshopForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('workshopTitle').value;
+        const description = document.getElementById('workshopDescription').value;
+        const date = document.getElementById('workshopDate').value;
+        const chef_id = document.getElementById('workshopChefId').value;
+        const recipe_id = document.getElementById('workshopRecipeId').value;
+
+        await fetch('/api/workshops', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, description, date, chef_id, recipe_id })
+        });
+
+        document.getElementById('workshopForm').reset();
+        fetchWorkshops();
+    });
+
+    // Register for a workshop
+    document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const user_id = document.getElementById('userId').value;
+        const workshop_id = document.getElementById('workshopId').value;
+
+        await fetch('/api/registrations', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id, workshop_id })
+        });
+
+        document.getElementById('registrationForm').reset();
+        alert('Registered successfully!');
+    });
+
+    // Update a recipe
+    async function updateRecipe(id) {
+        const title = prompt('Enter new title:');
+        const description = prompt('Enter new description:');
+        const ingredients = prompt('Enter new ingredients:');
+        const instructions = prompt('Enter new instructions:');
+        if (title && ingredients && instructions) {
+            await fetch(`/api/recipes/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, description, ingredients, instructions })
+            });
+            fetchRecipes();
+        }
+    }
+
+    // Delete a recipe
+    async function deleteRecipe(id) {
+        if (confirm('Are you sure you want to delete this recipe?')) {
+            await fetch(`/api/recipes/${id}`, { method: 'DELETE' });
+            fetchRecipes();
+        }
+    }
+
+    // Update a workshop
+    async function updateWorkshop(id) {
+        const title = prompt('Enter new title:');
+        const description = prompt('Enter new description:');
+        const date = prompt('Enter new date (YYYY-MM-DDTHH:MM):');
+        const recipe_id = prompt('Enter new recipe ID:');
+        if (title && date && recipe_id) {
+            await fetch(`/api/workshops/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, description, date, recipe_id })
+            });
+            fetchWorkshops();
+        }
+    }
+
+    // Delete a workshop
+    async function deleteWorkshop(id) {
+        if (confirm('Are you sure you want to delete this workshop?')) {
+            await fetch(`/api/workshops/${id}`, { method: 'DELETE' });
+            fetchWorkshops();
+        }
+    }
+
+    // Load data on page load
+    fetchRecipes();
+    fetchWorkshops();
+</script>
+</body>
+</html>

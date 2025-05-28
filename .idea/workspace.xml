@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1770c148-a717-4d9a-aa3f-980c6a731e4a" name="Changes" comment="vbvbvbnhbk">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Untitled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/add_comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/add_recipe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/assets/js/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/bot.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/config.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/cookbook.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/email.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/generate_ttk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/images/food_background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/images/РестАпи.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/images/Семинар 2 ChatGPT.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/includes/db.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/includes/footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/includes/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/logout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/proxy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/recipe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/register.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/test_db.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/toggle_like.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Новая папка/user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/recipesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/recipesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/registrationsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/registrationsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/workshopsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/workshopsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/recipeModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/recipeModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/registrationModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/registrationModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/workshopModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/workshopModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/recipesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/recipesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/registrationsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/registrationsRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/workshopsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workshopsRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Stayshy"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Stayshy/kulinary",
+    "accountId": "8196fbae-44ed-4eaa-b386-91c47e903f89"
+  }
+}]]></component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2xiDf2peKcZsoLZEG9EYWf4soyY" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PS-243.26053.13" />
+        <option value="bundled-php-predefined-a98d8de5180a-1ec7b7818973-com.jetbrains.php.sharedIndexes-PS-243.26053.13" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1770c148-a717-4d9a-aa3f-980c6a731e4a" name="Changes" comment="" />
+      <created>1748412100083</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748412100083</updated>
+      <workItem from="1748412102084" duration="357000" />
+    </task>
+    <task id="LOCAL-00001" summary="vbvbvb">
+      <option name="closed" value="true" />
+      <created>1748412220203</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1748412220203</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="vbvbvb" />
+    <MESSAGE value="vbvbvbnhbk" />
+    <option name="LAST_COMMIT_MESSAGE" value="vbvbvbnhbk" />
+  </component>
+</project>
